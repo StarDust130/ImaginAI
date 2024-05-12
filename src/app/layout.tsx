@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "ImaginAI is a platform for creating and sharing AI-generated art.",
   icons: {
-    icon: "https://img.icons8.com/?size=48&id=LlgB5a8aAr0G&format=png",
+    icon: "https://img.icons8.com/color/48/sparkling.png",
   },
 };
 
