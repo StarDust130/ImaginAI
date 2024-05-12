@@ -10,7 +10,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "ImaginAI",
+  title: "Imagin AI",
   description:
     "ImaginAI is a platform for creating and sharing AI-generated art.",
   icons: {
