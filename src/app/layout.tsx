@@ -3,6 +3,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark, neobrutalism } from "@clerk/themes";
 
 const cormorant = Cormorant_Garamond({
   weight: "700",
@@ -29,6 +30,7 @@ export default function RootLayout({
         <ClerkProvider
           appearance={{
             variables: { colorPrimary: "#007ACC" },
+            baseTheme: [dark, neobrutalism],
           }}
         >
           <html lang="en">
