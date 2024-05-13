@@ -93,7 +93,10 @@ const Sidebar = () => {
               <Link href={"/sign-in"}>Login</Link>
             </Button>
           </SignedOut>
-          <Separator />
+
+          <SignedIn>
+            <Separator />
+          </SignedIn>
 
           <span className="flex justify-between  ">
             <span className="self-start">
