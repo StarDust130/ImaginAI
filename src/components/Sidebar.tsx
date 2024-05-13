@@ -1,10 +1,11 @@
 "use client";
 import { navLinks } from "@/constants";
-import { SignedIn } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "./ModeToggle";
+import { Button } from "./ui/button";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -53,9 +54,22 @@ const Sidebar = () => {
                 );
               })}
             </ul>
-
-            <ModeToggle />
           </SignedIn>
+
+          <SignedOut>
+            <Button asChild>
+              <Link href={"/sign-in"}>Login</Link>
+            </Button>
+          </SignedOut>
+
+          <div className="flex justify-between">
+            <div>
+              <ModeToggle />
+            </div>
+            <div>
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          </div>
         </nav>
       </div>
     </aside>

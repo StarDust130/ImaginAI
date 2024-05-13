@@ -297,7 +297,7 @@
 
   /* Sidebar Component */
   .sidebar {
-    @apply hidden h-screen w-72 border-r-2   p-5 shadow-lg shadow-blue-200/50 lg:flex;
+    @apply hidden h-screen w-72 border-r-2   p-5 shadow-lg dark:shadow shadow-blue-200/50 lg:flex;
   }
 
   .sidebar-logo {
@@ -313,7 +313,7 @@
   }
 
   .sidebar-nav_element {
-    @apply flex-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover  transition-all  hover:shadow-inner;
+    @apply flex-center p-16-semibold w-full whitespace-nowrap rounded-2xl bg-cover  transition-all  hover:shadow-inner;
   }
 
   .sidebar-link {
