@@ -65,7 +65,7 @@ const MobileNav = () => {
                         key={link.route}
                         className={`${
                           isActive && "gradient-text   "
-                        }  p-18 whitespace-nowrap  `}
+                        }  p-18 whitespace-nowrap hover:bg-primary w-full rounded-2xl  `}
                       >
                         <Link
                           href={link.route}
