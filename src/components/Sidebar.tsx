@@ -6,11 +6,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ModeToggle } from "./ModeToggle";
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 const Sidebar = () => {
   const pathname = usePathname();
   return (
-    <aside className=" sidebar hidden md:block">
+    <aside className=" sidebar">
       <div className="flex size-full flex-col gap-4">
         <Link href={"/"} className="sidebar-logo">
           <Image
@@ -23,6 +24,7 @@ const Sidebar = () => {
             Imagin AI
           </span>
         </Link>
+        <Separator />
 
         <nav className="sidebar-nav">
           <SignedIn>
@@ -54,6 +56,8 @@ const Sidebar = () => {
                 );
               })}
             </ul>
+            <Separator />
+
             <ul className="sidebar-nav_elements">
               {navLinks.slice(6).map((link) => {
                 const isActive = link.route === pathname;
@@ -89,6 +93,7 @@ const Sidebar = () => {
               <Link href={"/sign-in"}>Login</Link>
             </Button>
           </SignedOut>
+          <Separator />
 
           <span className="flex justify-between  ">
             <span className="self-start">
