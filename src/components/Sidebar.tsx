@@ -1,3 +1,4 @@
+import { navLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,6 +17,14 @@ const Sidebar = () => {
             Imagin AI
           </span>
         </Link>
+
+        {navLinks.map((link) => (
+          <Link key={link.route} href={link.route} className="flex justify-start items-center gap-4">
+            <Image src={link.icon} alt={link.label} width={25} height={25} />
+
+            <span>{link.label}</span>
+          </Link>
+        ))}
       </div>
     </aside>
   );
