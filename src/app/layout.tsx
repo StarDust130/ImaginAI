@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "ImaginAI is a platform for creating and sharing AI-generated art.",
   icons: {
-    icon: "https://img.icons8.com/color/48/sparkling.png",
+    icon: "https://img.icons8.com/fluency/240/artstation.png",
   },
 };
 
@@ -26,7 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("antialiased", cormorant.className)}>
-        <ClerkProvider>
+        <ClerkProvider
+          appearance={{
+            variables: { colorPrimary: "#007ACC" },
+          }}
+        >
           <html lang="en">
             <body>{children}</body>
           </html>
