@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark, neobrutalism } from "@clerk/themes";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const cormorant = Cormorant_Garamond({
   weight: "700",
@@ -27,16 +28,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("antialiased", cormorant.className)}>
-        <ClerkProvider
-          appearance={{
-            variables: { colorPrimary: "#007ACC" },
-            baseTheme: [dark, neobrutalism],
-          }}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          <html lang="en">
-            <body>{children}</body>
-          </html>
-        </ClerkProvider>
+          <ClerkProvider
+            appearance={{
+              variables: { colorPrimary: "#007ACC" },
+              baseTheme: [dark, neobrutalism],
+            }}
+          >
+            <html lang="en">
+              <body>{children}</body>
+            </html>
+          </ClerkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -1,8 +1,13 @@
+"use client";
 import { navLinks } from "@/constants";
+import { SignedIn } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ModeToggle } from "./ModeToggle";
 
 const Sidebar = () => {
+  const pathname = usePathname();
   return (
     <aside className=" sidebar hidden md:block">
       <div className="flex size-full flex-col gap-4">
@@ -18,13 +23,40 @@ const Sidebar = () => {
           </span>
         </Link>
 
-        {navLinks.map((link) => (
-          <Link key={link.route} href={link.route} className="flex justify-start items-center gap-4">
-            <Image src={link.icon} alt={link.label} width={25} height={25} />
+        <nav className="sidebar-nav">
+          <SignedIn>
+            <ul className="sidebar-nav_elements">
+              {navLinks.map((link) => {
+                const isActive = link.route === pathname;
 
-            <span>{link.label}</span>
-          </Link>
-        ))}
+                return (
+                  <li
+                    key={link.route}
+                    className={`sidebar-nav_element group ${
+                      isActive
+                        ? "bg-primary text-white  "
+                        : "text-gray-500 hover:bg-blue-100 dark:hover:bg-blue-700 dark:text-white dark:brightness-200"
+                    }`}
+                  >
+                    <Link href={link.route} className="sidebar-link">
+                      <Image
+                        src={link.icon}
+                        alt={link.label}
+                        width={24}
+                        height={24}
+                        className={`${isActive && "brightness-200"}`}
+                      />
+
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <ModeToggle />
+          </SignedIn>
+        </nav>
       </div>
     </aside>
   );
