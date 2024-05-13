@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const cormorant = Cormorant_Garamond({
-  weight: "400",
+  weight: "700",
   subsets: ["latin"],
-  variable: "--font-jersey-20",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("antialiased", cormorant.className)}>{children}</body>
+      <body className={cn("antialiased", cormorant.className)}>
+        <ClerkProvider>
+          <html lang="en">
+            <body>{children}</body>
+          </html>
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
