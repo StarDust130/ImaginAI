@@ -27,7 +27,35 @@ const Sidebar = () => {
         <nav className="sidebar-nav">
           <SignedIn>
             <ul className="sidebar-nav_elements">
-              {navLinks.map((link) => {
+              {navLinks.slice(0, 6).map((link) => {
+                const isActive = link.route === pathname;
+
+                return (
+                  <li
+                    key={link.route}
+                    className={`sidebar-nav_element group ${
+                      isActive
+                        ? "bg-primary text-white  "
+                        : "text-gray-500 hover:bg-blue-100 dark:hover:bg-blue-700 dark:text-white dark:brightness-200"
+                    }`}
+                  >
+                    <Link href={link.route} className="sidebar-link">
+                      <Image
+                        src={link.icon}
+                        alt={link.label}
+                        width={24}
+                        height={24}
+                        className={`${isActive && "brightness-200"}`}
+                      />
+
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <ul className="sidebar-nav_elements">
+              {navLinks.slice(6).map((link) => {
                 const isActive = link.route === pathname;
 
                 return (
@@ -62,14 +90,14 @@ const Sidebar = () => {
             </Button>
           </SignedOut>
 
-          <div className="flex justify-between">
-            <div>
+          <span className="flex justify-between  ">
+            <span className="self-start">
               <ModeToggle />
-            </div>
-            <div>
+            </span>
+            <span>
               <UserButton afterSignOutUrl="/" />
-            </div>
-          </div>
+            </span>
+          </span>
         </nav>
       </div>
     </aside>
