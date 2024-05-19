@@ -4,7 +4,7 @@
 type CreateUserParams = {
   clerkId: string;
   email: string;
-  username: string;
+  userName: string;
   firstName: string | null;
   lastName: string | null;
   photo: string;
