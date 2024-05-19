@@ -13,7 +13,7 @@ if (!cached) {
   cached = (global as any).mongoose = { connection: null, promise: null };
 }
 
-export const ConnectToDatabase = async () => {
+export const connectToDatabase = async () => {
   if (cached.connection) return cached.connection;
 
   if (!MONGODB_URI) throw new Error("MONGODB_URL IS MISSING 🪴");
